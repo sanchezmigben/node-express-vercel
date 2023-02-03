@@ -4,7 +4,7 @@ const router = express.Router();
 router.get("/", async (req, res, next) => {
   console.log("Ha entrado en la ruta home");
   return res.status(200).json({
-    title: "Express Testing",
+    title: "Express Testinggggggg",
     message: "The app is working properly!",
   });
 });
