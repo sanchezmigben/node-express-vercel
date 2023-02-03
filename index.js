@@ -6,6 +6,10 @@ const home = require("./routes/home");
 const app = express();
 app.use(express.json());
 
+app.get("/",(req,res)=>(){
+  res.send("Ruta raiz")
+})
+
 // Routes
 app.use("/home", home);
 
