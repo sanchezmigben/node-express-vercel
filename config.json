@@ -1,5 +1,5 @@
 {   
-    "DBConnectionType":"", 
+    "DBConnectionType":"Atlas", 
     "connectionStringLocal": "mongodb://127.0.0.1:27017/DWES_3_exam_db",
     "connectionStringAtlas": "mongodb+srv://admin:mongo@cluster0.os03r.mongodb.net/buildingsDB?retryWrites=true&w=majority",
     "connectionStringURLAtlasAPI": "https://data.mongodb-api.com/app/data-alcab/endpoint/data/beta",

@@ -4,6 +4,7 @@ const home = require("./routes/home");
 const config = require("./config.json")
 const api_key_atlas = config.api_atlas_key
 const connectionStringURLAtlasAPI = config.connectionStringURLAtlasAPI
+const DBConnectionType = config.DBConnectionType
 
 const mongoose = require("./utils/mongodb.config")
 const axios = require('axios'); //ATLAS API REST
@@ -17,7 +18,7 @@ app.use(express.json());
 
 
 app.get("/",(req,res)=>{
-  res.send("Ruta raizzz")
+  res.send("Tipo de Conexión con BBDD: " + DBConnectionType)
 })
 
 // Routes
