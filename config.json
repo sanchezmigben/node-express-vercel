@@ -1,0 +1,19 @@
+{   
+    "DBConnectionType":"", 
+    "connectionStringLocal": "mongodb://127.0.0.1:27017/DWES_3_exam_db",
+    "connectionStringAtlas": "mongodb+srv://admin:mongo@cluster0.os03r.mongodb.net/buildingsDB?retryWrites=true&w=majority",
+    "connectionStringURLAtlasAPI": "https://data.mongodb-api.com/app/data-alcab/endpoint/data/beta",
+    "api_atlas_key":"oZRgl86bk4uPsKrmwdULJ0l3peVP1hii16vI2KaLJBlndjlmdVib74vjwvmuzTMg",
+    "api_atlas_collection":"services",
+    "api_atlas_database":"buildingsDB",
+    "api_atlas_dataSource":"Cluster0",
+    "secret_JWT": "3fa978e722e3b2f82e11680a58b54127",
+    "api_version": "v1",
+    "api_port": 9000,
+    "secret_Session": "9d7d92f0d3f9a182eec6a51b84fe66397222b10a",
+    "api_atlas_data": {
+        "collection": "services",
+        "database": "buildingsDB",
+        "dataSource": "Cluster0"
+    }
+}
