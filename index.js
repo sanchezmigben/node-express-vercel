@@ -1,4 +1,5 @@
 // Import packages
+const Service = require("./models/service")
 const express = require("express");
 const home = require("./routes/home");
 const config = require("./config.json")
@@ -26,6 +27,19 @@ app.use("/home", home);
 
 
 /******/
+app.get('/services2', async (req, res) => {
+    /*const { category } = req.query;
+    if (category) {
+        const products = await Product.find({ category })
+        res.render('products/index', { products, category })
+    } else {
+        const products = await Product.find({})
+        res.render('products/index', { products, category: 'All' })
+    }*/
+    const services = await Service.find({})
+    res.json(services);
+})
+
 app.get('/services', (req, res) => {
 
   /*const { category } = req.query;
