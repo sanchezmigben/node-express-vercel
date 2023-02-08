@@ -20,7 +20,7 @@ const app = express();
 
 
 //-- CORS ----------------
-const whitelist = ['https://frontend-node-express.vercel.app/']
+const whitelist = ['https://frontend-node-express.vercel.app']
 const corsOptions = {
   origin: (origin, callback) => {
     console.log("Origin: " + origin + " Existe: " + whitelist.indexOf(origin))
