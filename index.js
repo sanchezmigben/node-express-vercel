@@ -20,7 +20,7 @@ const app = express();
 
 
 //-- CORS ----------------
-/*const whitelist = ['http://127.0.0.1:5500']
+const whitelist = ['https://frontend-node-express.vercel.app/']
 const corsOptions = {
   origin: (origin, callback) => {
     console.log("Origin: " + origin + " Existe: " + whitelist.indexOf(origin))
@@ -33,7 +33,7 @@ const corsOptions = {
   credentials:true
 }
 
-app.use(cors(corsOptions))*/
+app.use(cors(corsOptions))
 
 //---------------------------------------------------------------
 app.use(cookieParser());
