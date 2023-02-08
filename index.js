@@ -60,6 +60,10 @@ app.use("/home", home);
 
 
 /******/
+app.post("/services", async(req,res)=>{
+  res.status(200).json({msg:"Servicio creado con éxito"})
+})
+
 app.get('/services2', async (req, res) => {
     /*const { category } = req.query;
     if (category) {
