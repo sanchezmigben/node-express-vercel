@@ -61,7 +61,8 @@ app.use("/home", home);
 
 /******/
 app.post("/services", async(req,res)=>{
-  res.status(200).send(req.body)
+  const { name, price, category } = req.body
+  res.status(200).json({ name: name, price: price, category: category, msg: "Creado!"})
 })
 
 app.get('/services2', async (req, res) => {
