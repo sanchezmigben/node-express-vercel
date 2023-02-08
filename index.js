@@ -19,7 +19,8 @@ app.use(express.json());
 
 
 app.get("/",(req,res)=>{
-  res.send("Tipo de Conexión con BBDD: " + DBConnectionType)
+    console.log("Ruta raiz")
+    res.send("Tipo de Conexión con BBDD: " + DBConnectionType)
 })
 
 // Routes
