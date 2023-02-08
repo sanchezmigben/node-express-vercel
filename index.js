@@ -6,15 +6,46 @@ const config = require("./config.json")
 const api_key_atlas = config.api_atlas_key
 const connectionStringURLAtlasAPI = config.connectionStringURLAtlasAPI
 const DBConnectionType = config.DBConnectionType
-
 const mongoose = require("./utils/mongodb.config")
 const axios = require('axios'); //ATLAS API REST
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const cors = require("cors")
 
 //console.log(config)
 //console.log(config.api_atlas_data)
 
 // Middlewares
 const app = express();
+
+
+//-- CORS ----------------
+const whitelist = ['http://127.0.0.1:5500']
+const corsOptions = {
+  origin: (origin, callback) => {
+    console.log("Origin: " + origin + " Existe: " + whitelist.indexOf(origin))
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error())
+    }
+  },
+  credentials:true
+}
+
+app.use(cors(corsOptions))
+//---------------------------------------------------------------
+app.use(cookieParser());
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure:true,
+    sameSite: 'none',
+    maxAge: 60 * 60 * 24 * 1000
+  },
+}))
 app.use(express.json());
 
 
