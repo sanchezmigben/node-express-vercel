@@ -74,7 +74,7 @@ app.post("/services", async(req,res)=>{
   res.status(200).json({ name: name, price: price, category: category, msg: "Creado!" + name + " - Session Count: " + req.session.count})
 })
 
-app.get('/services2', async (req, res) => {
+app.get('/services', async (req, res) => {
     /*const { category } = req.query;
     if (category) {
         const products = await Product.find({ category })
@@ -99,7 +99,7 @@ app.get('/services2', async (req, res) => {
     res.json(services);
 })
 
-app.get('/services', (req, res) => {
+app.get('/services222', (req, res) => {
 
   /*const { category } = req.query;
 
