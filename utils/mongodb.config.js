@@ -27,11 +27,11 @@ mongoose.establishConexion = function(){
         mongoose.connect(connectionString, connectionOptions)
             .then(() => {
                 console.log(msg)
-                logger.access.info(msg)
+                //logger.access.info(msg)
             })
             .catch(err => {
                 console.log("OH NO MONGO CONNECTION ERROR!!!! Desc: " + err)
-                logger.error.fatal("OH NO MONGO CONNECTION ERROR!!!! Desc: " + err)
+                //logger.error.fatal("OH NO MONGO CONNECTION ERROR!!!! Desc: " + err)
                 //console.log(err)
             })
     }

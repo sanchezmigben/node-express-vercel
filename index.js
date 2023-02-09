@@ -147,7 +147,7 @@ app.get('/services', (req, res) => {
 // connection
 const port = process.env.PORT || config.api_port;
 app.listen(port, () => {
-  logger.access.info(`Escuchando en puerto ${port}`)
+  //logger.access.info(`Escuchando en puerto ${port}`)
   console.log(`Listening to port ${port}`)
     //Después de levantar el servidor, conectar con la BD Mongo
   mongoose.establishConexion()    
