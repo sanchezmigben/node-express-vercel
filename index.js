@@ -47,10 +47,10 @@ app.use(session({
     secure:true,
     sameSite: 'none',
     maxAge: 60 * 60 * 24 * 1000,
-    domain: 'node-express-vercel-rho.vercel.app',
+    domain: 'node-express-vercel-rho.vercel.app', //PARA QUE LA SESSION FUNCIONE CORRECTAMENTE CON COOKIES
   },
 }))
-app.set("trust proxy", true);
+//app.set("trust proxy", true);
 
 app.use(express.json());
 
