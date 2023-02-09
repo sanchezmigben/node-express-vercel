@@ -1,16 +1,17 @@
 //winston (otra librería para logs de express)
 const log4js = require("log4js") //npm i log4js
+const ruta = "./tmp/"
 
 log4js.configure({
     appenders: {
         access: {
             type:"dateFile",
-            filename:"./access.log",
+            filename: ruta + "access.log",
             pattern:"-yyyy-MM-dd"
         },
         error: {
             type:"dateFile",
-            filename:"./error.log",
+            filename: ruta + "error.log",
             pattern:"-yyyy-MM-dd"
         }
     },
