@@ -35,7 +35,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.set("trust proxy", 1);
+
 
 //---------------------------------------------------------------
 app.use(cookieParser());
@@ -47,9 +47,11 @@ app.use(session({
     secure:true,
     sameSite: 'none',
     maxAge: 60 * 60 * 24 * 1000,
-    domain: 'vercel.app',
+    domain: '.vercel.app',
   },
 }))
+app.set("trust proxy", 1);
+
 app.use(express.json());
 
 
