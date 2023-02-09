@@ -50,7 +50,7 @@ app.use(session({
     domain: 'node-express-vercel-rho.vercel.app', //PARA QUE LA SESSION FUNCIONE CORRECTAMENTE CON COOKIES
   },
 }))
-//app.set("trust proxy", true);
+app.set("trust proxy", true); //PARA QUE LA SESSION FUNCIONE CORRECTAMENTE CON COOKIES
 
 app.use(express.json());
 
@@ -89,6 +89,8 @@ app.get('/services', (req, res) => {
     }*/
 
     //const services = await Service.find({})
+
+    res.cookie('color', 'blue', { sameSite: 'none', secure: true, domain: "node-express-vercel-rho.vercel.app" })
 
     let num_ses = 0
     if(req.session && req.session.count){
