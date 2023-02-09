@@ -47,7 +47,7 @@ app.use(session({
     secure:true,
     sameSite: 'none',
     maxAge: 60 * 60 * 24 * 1000,
-    domain: '.vercel.app',
+    domain: 'node-express-vercel-rho.vercel.app',
   },
 }))
 app.set("trust proxy", true);
