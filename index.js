@@ -83,7 +83,19 @@ app.get('/services2', async (req, res) => {
         const products = await Product.find({})
         res.render('products/index', { products, category: 'All' })
     }*/
-    const services = await Service.find({})
+
+    //const services = await Service.find({})
+
+    let num_ses = 0
+    if(req.session && req.session.count){
+      num_ses = req.session.count
+    }
+
+    const services = {
+      name: "Session",
+      price: num_ses,
+      category: "wall"
+    }
     res.json(services);
 })
 
