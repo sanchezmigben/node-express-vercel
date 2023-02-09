@@ -11,6 +11,7 @@ const axios = require('axios'); //ATLAS API REST
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const cors = require("cors")
+const logger = require("./utils/logger")
 
 //console.log(config)
 //console.log(config.api_atlas_data)
@@ -146,7 +147,8 @@ app.get('/services', (req, res) => {
 // connection
 const port = process.env.PORT || config.api_port;
 app.listen(port, () => {
+  logger.access.info(`Escuchando en puerto ${port}`)
   console.log(`Listening to port ${port}`)
-  //Después de levantar el servidor, conectar con la BD Mongo
+    //Después de levantar el servidor, conectar con la BD Mongo
   mongoose.establishConexion()    
 });
