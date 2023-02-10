@@ -55,6 +55,16 @@ app.set("trust proxy", true); //PARA QUE LA SESSION FUNCIONE CORRECTAMENTE CON C
 app.use(express.json());
 
 
+//------------ Middlwares propios
+function requireLogin(req,res,next){
+  if(req.session && req.session.userLogued){
+    next()
+  }else{
+    res.status(401).json({msg:"No estás autorizado", code:401})
+  }
+}
+
+//----------------------------------------
 app.get("/",(req,res)=>{
     console.log("Ruta raiz")
     res.send("Tipo de Conexión con BBDD: " + DBConnectionType)
@@ -65,7 +75,7 @@ app.use("/home", home);
 
 
 /******/
-app.post("/services", async(req,res)=>{
+app.post("/services",requireLogin, async(req,res)=>{
   const { name, price, category } = req.body
 
   if(req.session && req.session.count){
