@@ -78,6 +78,23 @@ app.post("/services", async(req,res)=>{
   res.status(200).json({ name: name, price: price, category: category, msg: "Creado!" + name + " - Session Count: " + req.session.count})
 })
 
+app.post("/login", async(req,res)=>{
+  const { name, pwd } = req.body
+
+  if(name == "admin" && pwd == "admin"){
+    const userLogued = {
+      username:name,
+      password:pwd,
+      profile:"A"
+    }
+    req.session.userLogued = userLogued
+    res.status(200).json({msg:"Autorizado", code:200})
+  } else {
+    res.status(401).json({msg:"No estás autorizado", code:401})
+  }
+  
+})
+
 app.get('/services', (req, res) => {
     /*const { category } = req.query;
     if (category) {
