@@ -106,7 +106,7 @@ app.post("/login", async(req,res)=>{
 
 })
 
-app.get('/services', (req, res) => {
+app.get('/services',requireLogin, (req, res) => {
     /*const { category } = req.query;
     if (category) {
         const products = await Product.find({ category })
