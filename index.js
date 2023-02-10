@@ -80,7 +80,8 @@ app.post("/services", async(req,res)=>{
 
 app.post("/login", async(req,res)=>{
   const { name, pwd } = req.body
-
+  console.log("name: " + name)
+  console.log("pwd: " + pwd)
   if(name == "admin" && pwd == "admin"){
     const userLogued = {
       username:name,
@@ -92,7 +93,7 @@ app.post("/login", async(req,res)=>{
   } else {
     res.status(401).json({msg:"No estás autorizado", code:401})
   }
-  
+
 })
 
 app.get('/services', (req, res) => {
