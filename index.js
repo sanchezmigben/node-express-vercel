@@ -79,12 +79,12 @@ app.post("/services", async(req,res)=>{
 })
 
 app.post("/login", async(req,res)=>{
-  const { name, pwd } = req.body
-  console.log("name: " + name)
+  const { user, pwd } = req.body
+  console.log("name: " + user)
   console.log("pwd: " + pwd)
-  if(name == "admin" && pwd == "admin"){
+  if(user == "admin" && pwd == "admin"){
     const userLogued = {
-      username:name,
+      username:user,
       password:pwd,
       profile:"A"
     }
