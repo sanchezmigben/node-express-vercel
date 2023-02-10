@@ -13,6 +13,9 @@ const session = require('express-session');
 const cors = require("cors")
 const logger = require("./utils/logger")
 
+const userBBDD = "admin"
+const pwdBBDD = "admin"
+
 //console.log(config)
 //console.log(config.api_atlas_data)
 
@@ -129,7 +132,7 @@ app.post("/login", async(req,res)=>{
   const { user, pwd } = req.body
   console.log("name: " + user)
   console.log("pwd: " + pwd)
-  if(user == "admin" && pwd == "admin"){
+  if(user == userBBDD && pwd == pwdBBDD){
     const userLogued = {
       username:user,
       password:pwd,
@@ -170,7 +173,7 @@ app.get('/servicesOLD',requireLogin, (req, res) => {
     res.json(services);
 })
 
-app.get('/services', (req, res) => {
+app.get('/services', requireLogin, (req, res) => {
 
   /*const { category } = req.query;
 
