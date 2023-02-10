@@ -78,14 +78,51 @@ app.use("/home", home);
 app.post("/services",requireLogin, async(req,res)=>{
   const { name, price, category } = req.body
 
-  if(req.session && req.session.count){
+  /*if(req.session && req.session.count){
     req.session.count += 1
   }else{
       req.session.count = 1
   }
 
 
-  res.status(200).json({ name: name, price: price, category: category, msg: "Creado!" + name + " - Session Count: " + req.session.count})
+  res.status(200).json({ name: name, price: price, category: category, msg: "Creado!" + name + " - Session Count: " + req.session.count})*/
+
+  const newService = new Service(req.body);
+    
+  var data = JSON.stringify({
+      "collection": "services",
+      "database": "buildingsDB",
+      "dataSource": "Cluster0",
+      "document": newService
+  });
+
+  var config = {
+      method: 'post',
+      url: connectionStringURLAtlasAPI + '/action/insertOne',
+      headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Request-Headers': '*',
+          'api-key': api_key_atlas
+      },
+      data : data
+  };
+
+  //console.log(data);
+
+  axios(config)
+  .then(function (response) {
+      const insertedId = response.data.insertedId;
+      //console.log(response.data);
+      //console.log(insertedId);
+      //res.redirect(`/products_api/${insertedId}`)
+      res.status(200).json(insertedId);
+      
+  })
+  .catch(function (error) {
+      console.log(error);
+      res.status(404).json(error);
+  });
+
 })
 
 app.post("/login", async(req,res)=>{
