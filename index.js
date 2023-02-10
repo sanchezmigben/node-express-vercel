@@ -106,7 +106,7 @@ app.post("/login", async(req,res)=>{
 
 })
 
-app.get('/services',requireLogin, (req, res) => {
+app.get('/servicesOLD',requireLogin, (req, res) => {
     /*const { category } = req.query;
     if (category) {
         const products = await Product.find({ category })
@@ -133,7 +133,7 @@ app.get('/services',requireLogin, (req, res) => {
     res.json(services);
 })
 
-app.get('/services222', (req, res) => {
+app.get('/services', (req, res) => {
 
   /*const { category } = req.query;
 
