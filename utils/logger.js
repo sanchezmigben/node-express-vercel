@@ -1,5 +1,5 @@
 //winston (otra librería para logs de express)
-/*const log4js = require("log4js") //npm i log4js
+const log4js = require("log4js") //npm i log4js
 const ruta = "./tmp/"
 
 log4js.configure({
@@ -29,4 +29,4 @@ module.exports = {
     access: acceso,
     error: err,
     express: log4js.connectLogger(acceso)
-}*/
+}
