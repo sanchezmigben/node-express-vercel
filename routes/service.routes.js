@@ -3,5 +3,6 @@ const express = require("express")
 const router = express.Router()
 
 router.get("/", serviceController.findAll);
+router.post("/", serviceController.create);
   
 module.exports = router;
