@@ -1,6 +1,6 @@
 // Import packages
 //require('dotenv').config();
-const Service = require("./models/service")
+const Service = require("./models/service.model")
 const express = require("express");
 const home = require("./routes/home");
 const config = require("./config.json")
