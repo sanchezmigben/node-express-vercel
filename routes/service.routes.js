@@ -1,10 +1,10 @@
 const express = require("express")
 const router = express.Router()
 
-router.get("/servicesR", async (req, res, next) => {
-    console.log("Ha entrado en la ruta homeee");
+router.get("/", async (req, res, next) => {
+    console.log("Ha entrado en la ruta services");
     return res.status(200).json({
-      title: "Express Testinggggggggg",
+      title: "Express Servicesssss Routes",
       message: "The app is working properly!",
     });
   });

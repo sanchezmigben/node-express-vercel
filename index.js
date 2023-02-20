@@ -3,6 +3,7 @@
 const Service = require("./models/service.model")
 const express = require("express");
 const home = require("./routes/home");
+const serviceRoutes = require("./routes/service.routes")
 const config = require("./config.json")
 const mongoose = require("./utils/mongodb.config")
 const axios = require('axios'); //ATLAS API REST
@@ -80,6 +81,7 @@ app.get("/",(req,res)=>{
 
 // Routes
 app.use("/home", home);
+app.use("/api/v1/services", serviceRoutes)
 
 
 /******/
