@@ -1,17 +1,22 @@
 // Import packages
+//require('dotenv').config();
 const Service = require("./models/service")
 const express = require("express");
 const home = require("./routes/home");
 const config = require("./config.json")
-const api_key_atlas = config.api_atlas_key
-const connectionStringURLAtlasAPI = config.connectionStringURLAtlasAPI
-const DBConnectionType = config.DBConnectionType
 const mongoose = require("./utils/mongodb.config")
 const axios = require('axios'); //ATLAS API REST
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const cors = require("cors")
 const logger = require("./utils/logger")
+
+/* Parámetros iniciales */
+const api_key_atlas = config.api_atlas_key
+const connectionStringURLAtlasAPI = config.connectionStringURLAtlasAPI
+const DBConnectionType = config.DBConnectionType
+const api_atlas_data = config.api_atlas_data
+/********************************/
 
 const userBBDD = "admin"
 const pwdBBDD = "admin"
@@ -92,12 +97,16 @@ app.post("/services",requireLogin, async(req,res)=>{
 
   const newService = new Service(req.body);
     
-  var data = JSON.stringify({
+  /*var data = JSON.stringify({
       "collection": "services",
       "database": "buildingsDB",
       "dataSource": "Cluster0",
       "document": newService
-  });
+  });*/
+
+  var dataAux = api_atlas_data
+  dataAux.document = newService
+  data = JSON.stringify(dataAux)
 
   var config = {
       method: 'post',
@@ -173,7 +182,7 @@ app.get('/servicesOLD',requireLogin, (req, res) => {
     res.json(services);
 })
 
-app.get('/services', requireLogin, (req, res) => {
+app.get('/services',requireLogin, (req, res) => {
 
   /*const { category } = req.query;
 
@@ -193,18 +202,25 @@ app.get('/services', requireLogin, (req, res) => {
 
   //console.log(config.api_atlas_data)
   //data = JSON.stringify(config.api_atlas_data);
-  data = JSON.stringify({
-          /*"collection": config.api_atlas_collection,
-          "database": config.api_atlas_database,
-          "dataSource": config.api_atlas_dataSource*/
+  
+  /*data = JSON.stringify({          
           "collection": "services",
           "database": "buildingsDB",
           "dataSource": "Cluster0",
-          /*"projection":{
-            "_id":1
-          }*/
+  });*/
+  
+  /*var dataAux = api_atlas_data
+  const newService = { "name" : "prueba "}
+  dataAux.document = newService
+  data2 = JSON.stringify(dataAux)
+  console.log(data2)*/
 
-  });
+
+  data = JSON.stringify(         
+      api_atlas_data
+  );
+
+
   console.log(data)
 
   var config = {
@@ -240,7 +256,7 @@ app.get('/services', requireLogin, (req, res) => {
 
 // connection
 const port = process.env.PORT || config.api_port;
-app.listen(port, () => {
+app.listen(port, () => {  
   //logger.access.info(`Escuchando en puerto ${port}`)
   console.log(`Listening to port ${port}`)
     //Después de levantar el servidor, conectar con la BD Mongo
