@@ -1,8 +1,9 @@
+const requireLogin = require("../middlewares/jwt.mw")
 const serviceController = require("../controllers/service.controller")
 const express = require("express")
 const router = express.Router()
 
-router.get("/", serviceController.findAll);
-router.post("/", serviceController.create);
+router.get("/",requireLogin, serviceController.findAll);
+router.post("/",requireLogin, serviceController.create);
   
 module.exports = router;

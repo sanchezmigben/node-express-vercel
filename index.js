@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const cors = require("cors")
 const logger = require("./utils/logger")
+const requireLogin = require("./middlewares/jwt.mw")
 
 /* Parámetros iniciales */
 const api_key_atlas = config.api_atlas_key
@@ -65,13 +66,13 @@ app.use(express.json());
 
 
 //------------ Middlwares propios
-function requireLogin(req,res,next){
+/*function requireLogin(req,res,next){
   if(req.session && req.session.userLogued){
     next()
   }else{
     res.status(401).json({msg:"No estás autorizado", code:401})
   }
-}
+}*/
 
 //----------------------------------------
 app.get("/",(req,res)=>{
