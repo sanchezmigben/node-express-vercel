@@ -97,16 +97,16 @@ app.post("/services",requireLogin, async(req,res)=>{
 
   const newService = new Service(req.body);
     
-  /*var data = JSON.stringify({
+  var data = JSON.stringify({
       "collection": "services",
       "database": "buildingsDB",
       "dataSource": "Cluster0",
       "document": newService
-  });*/
+  });
 
-  var dataAux = api_atlas_data
+  /*var dataAux = api_atlas_data
   dataAux.document = newService
-  data = JSON.stringify(dataAux)
+  data = JSON.stringify(dataAux)*/
 
   var config = {
       method: 'post',
