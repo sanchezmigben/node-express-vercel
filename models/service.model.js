@@ -64,11 +64,11 @@ Service.create = async function(newService, result){
 
     var config = {
         method: 'post',
-        url: connectionStringURLAtlasAPI + '/action/insertOne',
+        url: configParams.connectionStringURLAtlasAPI + '/action/insertOne',
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Request-Headers': '*',
-            'api-key': api_key_atlas
+            'api-key': configParams.api_atlas_key
         },
         data : data
     };
