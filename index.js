@@ -1,5 +1,6 @@
 // Import packages
 //require('dotenv').config();
+const errorHandler = require("./middlewares/errorHandler.mw")
 const Service = require("./models/service.model")
 const express = require("express");
 const home = require("./routes/home");
@@ -256,6 +257,8 @@ app.get('/services',requireLogin, (req, res) => {
 })
 /******/
 
+//Middlewares
+app.use(errorHandler)
 
 // connection
 const port = process.env.PORT || config.api_port;
