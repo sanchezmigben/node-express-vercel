@@ -1,4 +1,5 @@
 const serviceModel = require("../models/service.model")
+const nodemailer = require("nodemailer");
 //const configParams = require("../config.json")
 
 function wrapAsync(fn) {
@@ -35,5 +36,39 @@ exports.create = wrapAsync(async function(req,res,next){
             res.status(200).json(serviceCreated)
         }   
     })
+})
+
+exports.sendEmail = wrapAsync(async function(req,res,next){
+    
+    const config = {
+        service: "gmail",
+        port: 465,
+        secure: true,
+        logger: true,
+        debug: true,
+        secureConnection: false,
+        auth: {
+            user: "sanchez.migben@gmail.com",
+            pass: "dtnkwmqlnslazkmr"
+        },
+        tls: {
+            rejectUnAuthorized:true
+        }
+    }
+
+    const mensaje = {
+        from : "sanchez.migben@gmail.com",
+        to: "sanchez.migben@gmail.com",
+        subject: "Correo de prueba",
+        text: "Envío con nodemailer"
+    }
+
+    const transport = nodemailer.createTransport(config)
+
+    console.log("Enviando...")
+
+    const info = await transport.sendMail(mensaje)
+
+    console.log(info)
 })
 

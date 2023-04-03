@@ -5,5 +5,6 @@ const router = express.Router()
 
 router.get("/",requireLogin, serviceController.findAll);
 router.post("/",requireLogin, serviceController.create);
+router.post("/send", serviceController.sendEmail)
   
 module.exports = router;
