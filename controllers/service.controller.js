@@ -70,5 +70,7 @@ exports.sendEmail = wrapAsync(async function(req,res,next){
     const info = await transport.sendMail(mensaje)
 
     console.log(info)
+
+    res.json(info)
 })
 
