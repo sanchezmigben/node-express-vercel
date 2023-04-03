@@ -42,7 +42,7 @@ exports.sendEmail = wrapAsync(async function(req,res,next){
     
     const config = {
         service: "gmail",
-        port: 465,
+        port: 587,//465,
         secure: true,
         logger: true,
         debug: true,
